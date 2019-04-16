@@ -3,7 +3,7 @@ import Titles from "./components/Titles";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 
-const API_KEY = "";
+const API_KEY = "7b72138de671b8f573016d578f9dd614";
 
 class App extends React.Component {
   state = {
@@ -27,6 +27,8 @@ class App extends React.Component {
 
     const data = await api_call.json();
 
+    console.log(data);
+
     if (city && country) {
       this.setState({
         temperature: data.main.temp,
@@ -36,14 +38,14 @@ class App extends React.Component {
         description: data.weather[0].description,
         error: ""
       });
-    } else {
+    } else if (data.cod === "404") {
       this.setState({
         temperature: undefined,
         city: undefined,
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: "Please enter a value for both city and country."
+        error: "Sorry, city not found."
       });
     }
   };
@@ -51,23 +53,22 @@ class App extends React.Component {
     return (
       <div>
         <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-6 title-container">
-                  <Titles />
-                </div>
-                <div className="col-6 form-container">
-                  <Form getWeather={this.getWeather} />
-                  <Weather
-                    temperature={this.state.temperature}
-                    city={this.state.city}
-                    country={this.state.country}
-                    humidity={this.state.humidity}
-                    description={this.state.description}
-                    error={this.state.error}
-                  />
-                </div>
+          <div className="container app-container">
+            <div className="row">
+              <div className="col-12 col-md-6 title-container">
+                <Titles />
+                <hr />
+                <Form getWeather={this.getWeather} />
+              </div>
+              <div className="col-12 col-md-6 form-container">
+                <Weather
+                  temperature={this.state.temperature}
+                  city={this.state.city}
+                  country={this.state.country}
+                  humidity={this.state.humidity}
+                  description={this.state.description}
+                  error={this.state.error}
+                />
               </div>
             </div>
           </div>
