@@ -31,7 +31,7 @@ class App extends React.Component {
 
     if (city && country) {
       this.setState({
-        temperature: data.main.temp,
+        temperature: Math.trunc((data.main.temp*(9/5))+32),
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity,
