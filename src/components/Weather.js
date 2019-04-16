@@ -8,7 +8,10 @@ const Weather = props => (
     {props.city && props.country && (
       <h3 className="weather__key">
         Location:
-        <span className="weather__value"> {props.city}, {props.country}</span>
+        <span className="weather__value">
+          {" "}
+          {props.city}, {props.country}
+        </span>
       </h3>
     )}
     {props.humidity && (
@@ -22,7 +25,12 @@ const Weather = props => (
         Condition:<span className="weather__value"> {props.description}</span>
       </h3>
     )}
-    {props.error && <h1 className="weather__error">Error: {props.error}</h1>}
+    {props.error && (
+      <div className="error-container">
+        <i className="fas fa-exclamation-circle" />
+        <h4 className="weather__error">{props.error}</h4>
+      </div>
+    )}
   </div>
 );
 

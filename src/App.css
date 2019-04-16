@@ -27,10 +27,12 @@ body {
   background-color: #FFFFFF;
 }
 
-.form-container {
+.weather-container {
   padding: 24px 24px;
   background-color: #2C3E50;
-  align-items: center;
+  /* display: flex;
+  align-items: center !important; */
+  display: inline-block;
   text-align: right;
 }
 
@@ -40,8 +42,6 @@ body {
   text-transform: uppercase;
 }
 
-.weather__info {}
-
 .weather__key {
   color: #FFFFFF;
 }
@@ -50,8 +50,18 @@ body {
   color: #FFDD00;
   text-transform: capitalize;
 }
+.error-container {
+  text-align: center;
+  margin: 15px 0px;
+}
 
 .weather__error {
   color: #FFDD00;
-  margin-bottom: 0px;
+  margin: 0px;
+}
+
+.fas {
+  color: #FFDD00;
+  font-size: 10rem;
+  margin-bottom: 24px;
 }

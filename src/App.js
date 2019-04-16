@@ -29,16 +29,8 @@ class App extends React.Component {
 
     console.log(data);
 
-    if (city && country) {
-      this.setState({
-        temperature: Math.trunc((data.main.temp*(9/5))+32),
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
-        error: ""
-      });
-    } else if (data.cod === "404") {
+    if (data.cod === "404") {
+      console.log("404 ERROR!");
       this.setState({
         temperature: undefined,
         city: undefined,
@@ -46,6 +38,15 @@ class App extends React.Component {
         humidity: undefined,
         description: undefined,
         error: "Sorry, city not found."
+      });
+    } else if (city && country) {
+      this.setState({
+        temperature: Math.trunc((data.main.temp*(9/5))+32),
+        city: data.name,
+        country: data.sys.country,
+        humidity: data.main.humidity,
+        description: data.weather[0].description,
+        error: ""
       });
     }
   };
@@ -60,7 +61,7 @@ class App extends React.Component {
                 <hr />
                 <Form getWeather={this.getWeather} />
               </div>
-              <div className="col-12 col-md-6 form-container">
+              <div className="col-12 col-md-6 weather-container">
                 <Weather
                   temperature={this.state.temperature}
                   city={this.state.city}
