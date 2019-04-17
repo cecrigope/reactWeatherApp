@@ -8,6 +8,8 @@ const API_KEY = "7b72138de671b8f573016d578f9dd614";
 class App extends React.Component {
   state = {
     temperature: undefined,
+    temperature_min: undefined,
+    temperature_max: undefined,
     city: undefined,
     country: undefined,
     humidity: undefined,
@@ -33,6 +35,8 @@ class App extends React.Component {
       console.log("404 ERROR!");
       this.setState({
         temperature: undefined,
+        temperature_min: undefined,
+        temperature_max: undefined,
         city: undefined,
         country: undefined,
         humidity: undefined,
@@ -42,6 +46,8 @@ class App extends React.Component {
     } else if (city && country) {
       this.setState({
         temperature: Math.trunc((data.main.temp*(9/5))+32),
+        temperature_min: Math.trunc((data.main.temp_min*(9/5))+32),
+        temperature_max: Math.trunc((data.main.temp_max*(9/5))+32),
         city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity,
@@ -64,6 +70,8 @@ class App extends React.Component {
               <div className="col-12 col-md-6 weather-container">
                 <Weather
                   temperature={this.state.temperature}
+                  temperature_min={this.state.temperature_min}
+                  temperature_max={this.state.temperature_max}
                   city={this.state.city}
                   country={this.state.country}
                   humidity={this.state.humidity}

@@ -5,20 +5,28 @@
   src: url(fonts/TrimBold.ttf);
 }
 
+:root {
+  --primary-light: #FFA800;
+  --secondary-light: #EB4616;
+  --primary-dark: #21B65D;
+  --secondary-dark: #304C82;
+}
+
 body {
   font-family: "Monda";
 }
 
-.display-1, .display-2, .display-3, .display-4, .display-5 {
+.temp {
   font-family: "TrimBold";
+  margin-bottom: 0px;
 }
 
 .wrapper {
-  background: linear-gradient(to bottom, #FFDD00, #EB4616);
+  background: linear-gradient(to bottom, var(--primary-light), var(--secondary-light));
   width: 100%;
   min-height: 100vh;
-  align-items: center;
   display: flex;
+  align-items: center;
   padding: 0px 18px;
 }
 
@@ -33,12 +41,12 @@ body {
   /* display: flex;
   align-items: center !important; */
   display: inline-block;
-  text-align: right;
+  text-align: left;
 }
 
 .title-container__title {
   font-family: "TrimBold";
-  color: #EB4616;
+  color: var(--secondary-light);
   text-transform: uppercase;
 }
 
@@ -47,7 +55,7 @@ body {
 }
 
 .weather__value {
-  color: #FFDD00;
+  color: var(--primary-light);
   text-transform: capitalize;
 }
 .error-container {
@@ -56,12 +64,12 @@ body {
 }
 
 .weather__error {
-  color: #FFDD00;
+  color: var(--primary-light);
   margin: 0px;
 }
 
 .fas {
-  color: #FFDD00;
+  color: var(--primary-light);
   font-size: 10rem;
   margin-bottom: 24px;
 }
